@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace MovieApp.Application.DTOs
 {
-    public record ActorDto(int Id, string Name, DateTime BirthDate);
+    public record ActorDto(int Id, string Name, DateOnly BirthDate);
 }

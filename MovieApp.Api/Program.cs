@@ -1,6 +1,10 @@
 using Microsoft.EntityFrameworkCore;
+using MovieApp.Application.Interfaces;
 using MovieApp.Infrastructure;
 using MovieApp.Infrastructure.Data;
+using MovieApp.Application.DTOs;
+using MovieApp.Domain.Entities;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,11 +28,47 @@ if (app.Environment.IsDevelopment())
 // Initialize Db
 using (var scope = app.Services.CreateScope())
 {
-    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    var servicesProvider = scope.ServiceProvider;
+    var db = servicesProvider.GetRequiredService<AppDbContext>();
+
     db.Database.EnsureCreated();
+
+    var movieRepo = scope.ServiceProvider.GetRequiredService<IMovieRepository>();
+    var actorRepo = scope.ServiceProvider.GetRequiredService<IActorRepository>();
+
+
+
     if (!db.Movies.Any())
     {
-        Console.WriteLine("Database created and ready for seeding!");
+        var movieLoader = scope.ServiceProvider.GetRequiredService<ILoader<MovieDto>>();
+        var actorLoader = scope.ServiceProvider.GetRequiredService<ILoader<ActorDto>>();
+
+        List<MovieDto> movieDtos = await movieLoader.LoadAsync();
+        List<ActorDto> actorDtos = await actorLoader.LoadAsync();
+
+        Actor a = new Actor();
+
+        var actors = actorDtos.Select(a => new MovieApp.Domain.Entities.Actor
+        {
+            Id = a.Id,
+            Name = a.Name,
+            BirthDate = a.BirthDate
+        }).ToList();
+
+        var movies = movieDtos.Select(m => new MovieApp.Domain.Entities.Movie
+        {
+            Id = m.Id,
+            Title = m.Title,
+            Genre = m.Genre,
+            Rating = m.Rating,
+            Year = m.Year,
+            Actors = actors.Where(a => m.ActorsIds.Contains(a.Id)).ToList()
+        }).ToList();
+
+        await actorRepo.AddRangeAsync(actors);
+        await movieRepo.AddRangeAsync(movies);
+
+        Console.WriteLine("Data loaded where loaded successfully!");
     }
 }
 
