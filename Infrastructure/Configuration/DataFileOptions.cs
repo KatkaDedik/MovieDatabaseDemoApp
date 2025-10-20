@@ -8,5 +8,8 @@ namespace MovieApp.Infrastructure.Configuration
 {
     internal class DataFileOptions
     {
+        public const string SectionName = "DataFiles";
+        public string MoviesJson { get; set; } = string.Empty;
+        public string ActorsXml { get; set; } = string.Empty;
     }
 }

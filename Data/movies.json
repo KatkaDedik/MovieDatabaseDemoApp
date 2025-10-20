@@ -1,0 +1,402 @@
+[
+  {
+    "Id": 1,
+    "Title": "The Shawshank Redemption",
+    "Genre": "Drama",
+    "Rating": 9.3,
+    "Year": 1994,
+    "ActorIds": [1, 2, 3]
+  },
+  {
+    "Id": 2,
+    "Title": "The Godfather",
+    "Genre": "Crime",
+    "Rating": 9.2,
+    "Year": 1972,
+    "ActorIds": [4, 5, 6]
+  },
+  {
+    "Id": 3,
+    "Title": "The Dark Knight",
+    "Genre": "Action",
+    "Rating": 9.0,
+    "Year": 2008,
+    "ActorIds": [7, 8, 9]
+  },
+  {
+    "Id": 4,
+    "Title": "12 Angry Men",
+    "Genre": "Drama",
+    "Rating": 8.9,
+    "Year": 1957,
+    "ActorIds": [10, 11, 12]
+  },
+  {
+    "Id": 5,
+    "Title": "Schindler's List",
+    "Genre": "Biography",
+    "Rating": 8.9,
+    "Year": 1993,
+    "ActorIds": [13, 14, 15]
+  },
+  {
+    "Id": 6,
+    "Title": "The Lord of the Rings: The Return of the King",
+    "Genre": "Adventure",
+    "Rating": 8.9,
+    "Year": 2003,
+    "ActorIds": [16, 17, 18]
+  },
+  {
+    "Id": 7,
+    "Title": "Pulp Fiction",
+    "Genre": "Crime",
+    "Rating": 8.9,
+    "Year": 1994,
+    "ActorIds": [19, 20, 21]
+  },
+  {
+    "Id": 8,
+    "Title": "The Good, the Bad and the Ugly",
+    "Genre": "Western",
+    "Rating": 8.8,
+    "Year": 1966,
+    "ActorIds": [22, 23, 24]
+  },
+  {
+    "Id": 9,
+    "Title": "Fight Club",
+    "Genre": "Drama",
+    "Rating": 8.8,
+    "Year": 1999,
+    "ActorIds": [25, 26, 27]
+  },
+  {
+    "Id": 10,
+    "Title": "Forrest Gump",
+    "Genre": "Drama",
+    "Rating": 8.8,
+    "Year": 1994,
+    "ActorIds": [28, 29, 30]
+  },
+  {
+    "Id": 11,
+    "Title": "Inception",
+    "Genre": "Sci-Fi",
+    "Rating": 8.7,
+    "Year": 2010,
+    "ActorIds": [31, 32, 33]
+  },
+  {
+    "Id": 12,
+    "Title": "The Matrix",
+    "Genre": "Sci-Fi",
+    "Rating": 8.7,
+    "Year": 1999,
+    "ActorIds": [34, 35, 36]
+  },
+  {
+    "Id": 13,
+    "Title": "Goodfellas",
+    "Genre": "Biography",
+    "Rating": 8.7,
+    "Year": 1990,
+    "ActorIds": [37, 38, 39]
+  },
+  {
+    "Id": 14,
+    "Title": "Seven Samurai",
+    "Genre": "Adventure",
+    "Rating": 8.6,
+    "Year": 1954,
+    "ActorIds": [40, 41, 42]
+  },
+  {
+    "Id": 15,
+    "Title": "City of God",
+    "Genre": "Crime",
+    "Rating": 8.6,
+    "Year": 2002,
+    "ActorIds": [43, 44, 45]
+  },
+  {
+    "Id": 16,
+    "Title": "Se7en",
+    "Genre": "Crime",
+    "Rating": 8.6,
+    "Year": 1995,
+    "ActorIds": [46, 47, 48]
+  },
+  {
+    "Id": 17,
+    "Title": "The Silence of the Lambs",
+    "Genre": "Thriller",
+    "Rating": 8.6,
+    "Year": 1991,
+    "ActorIds": [49, 50, 2]
+  },
+  {
+    "Id": 18,
+    "Title": "It’s a Wonderful Life",
+    "Genre": "Drama",
+    "Rating": 8.6,
+    "Year": 1946,
+    "ActorIds": [12, 28, 51]
+  },
+  {
+    "Id": 19,
+    "Title": "Life Is Beautiful",
+    "Genre": "Comedy",
+    "Rating": 8.6,
+    "Year": 1997,
+    "ActorIds": [52, 53, 54]
+  },
+  {
+    "Id": 20,
+    "Title": "The Usual Suspects",
+    "Genre": "Crime",
+    "Rating": 8.5,
+    "Year": 1995,
+    "ActorIds": [55, 56, 57]
+  },
+  {
+    "Id": 21,
+    "Title": "Léon: The Professional",
+    "Genre": "Crime",
+    "Rating": 8.5,
+    "Year": 1994,
+    "ActorIds": [58, 59, 60]
+  },
+  {
+    "Id": 22,
+    "Title": "Spirited Away",
+    "Genre": "Animation",
+    "Rating": 8.5,
+    "Year": 2001,
+    "ActorIds": [61, 62, 63]
+  },
+  {
+    "Id": 23,
+    "Title": "Saving Private Ryan",
+    "Genre": "Drama",
+    "Rating": 8.5,
+    "Year": 1998,
+    "ActorIds": [64, 65, 66]
+  },
+  {
+    "Id": 24,
+    "Title": "Interstellar",
+    "Genre": "Adventure",
+    "Rating": 8.6,
+    "Year": 2014,
+    "ActorIds": [31, 67, 68]
+  },
+  {
+    "Id": 25,
+    "Title": "Parasite",
+    "Genre": "Thriller",
+    "Rating": 8.6,
+    "Year": 2019,
+    "ActorIds": [69, 70, 71]
+  },
+  {
+    "Id": 26,
+    "Title": "Whiplash",
+    "Genre": "Drama",
+    "Rating": 8.5,
+    "Year": 2014,
+    "ActorIds": [72, 73, 74]
+  },
+  {
+    "Id": 27,
+    "Title": "Gladiator",
+    "Genre": "Action",
+    "Rating": 8.5,
+    "Year": 2000,
+    "ActorIds": [75, 76, 77]
+  },
+  {
+    "Id": 28,
+    "Title": "Memento",
+    "Genre": "Mystery",
+    "Rating": 8.4,
+    "Year": 2000,
+    "ActorIds": [78, 79, 80]
+  },
+  {
+    "Id": 29,
+    "Title": "The Prestige",
+    "Genre": "Drama",
+    "Rating": 8.5,
+    "Year": 2006,
+    "ActorIds": [81, 82, 83]
+  },
+  {
+    "Id": 30,
+    "Title": "The Lion King",
+    "Genre": "Animation",
+    "Rating": 8.5,
+    "Year": 1994,
+    "ActorIds": [84, 85, 86]
+  },
+  {
+    "Id": 31,
+    "Title": "Back to the Future",
+    "Genre": "Adventure",
+    "Rating": 8.5,
+    "Year": 1985,
+    "ActorIds": [87, 88, 89]
+  },
+  {
+    "Id": 32,
+    "Title": "Alien",
+    "Genre": "Horror",
+    "Rating": 8.4,
+    "Year": 1979,
+    "ActorIds": [90, 91, 92]
+  },
+  {
+    "Id": 33,
+    "Title": "Apocalypse Now",
+    "Genre": "War",
+    "Rating": 8.4,
+    "Year": 1979,
+    "ActorIds": [93, 94, 95]
+  },
+  {
+    "Id": 34,
+    "Title": "Oldboy",
+    "Genre": "Thriller",
+    "Rating": 8.4,
+    "Year": 2003,
+    "ActorIds": [96, 97, 98]
+  },
+  {
+    "Id": 35,
+    "Title": "Once Upon a Time in the West",
+    "Genre": "Western",
+    "Rating": 8.5,
+    "Year": 1968,
+    "ActorIds": [22, 99, 100]
+  },
+  {
+    "Id": 36,
+    "Title": "Casablanca",
+    "Genre": "Romance",
+    "Rating": 8.5,
+    "Year": 1942,
+    "ActorIds": [101, 102, 103]
+  },
+  {
+    "Id": 37,
+    "Title": "City Lights",
+    "Genre": "Comedy",
+    "Rating": 8.5,
+    "Year": 1931,
+    "ActorIds": [104, 105, 106]
+  },
+  {
+    "Id": 38,
+    "Title": "Cinema Paradiso",
+    "Genre": "Drama",
+    "Rating": 8.5,
+    "Year": 1988,
+    "ActorIds": [107, 108, 109]
+  },
+  {
+    "Id": 39,
+    "Title": "The Departed",
+    "Genre": "Crime",
+    "Rating": 8.5,
+    "Year": 2006,
+    "ActorIds": [110, 111, 112]
+  },
+  {
+    "Id": 40,
+    "Title": "Whiplash",
+    "Genre": "Drama",
+    "Rating": 8.5,
+    "Year": 2014,
+    "ActorIds": [72, 113, 114]
+  },
+  {
+    "Id": 41,
+    "Title": "The Dark Knight Rises",
+    "Genre": "Action",
+    "Rating": 8.4,
+    "Year": 2012,
+    "ActorIds": [7, 115, 116]
+  },
+  {
+    "Id": 42,
+    "Title": "WALL·E",
+    "Genre": "Animation",
+    "Rating": 8.4,
+    "Year": 2008,
+    "ActorIds": [117, 118, 119]
+  },
+  {
+    "Id": 43,
+    "Title": "The Lives of Others",
+    "Genre": "Drama",
+    "Rating": 8.4,
+    "Year": 2006,
+    "ActorIds": [120, 121, 122]
+  },
+  {
+    "Id": 44,
+    "Title": "Django Unchained",
+    "Genre": "Western",
+    "Rating": 8.4,
+    "Year": 2012,
+    "ActorIds": [123, 124, 125]
+  },
+  {
+    "Id": 45,
+    "Title": "The Shining",
+    "Genre": "Horror",
+    "Rating": 8.4,
+    "Year": 1980,
+    "ActorIds": [90, 126, 127]
+  },
+  {
+    "Id": 46,
+    "Title": "Paths of Glory",
+    "Genre": "War",
+    "Rating": 8.4,
+    "Year": 1957,
+    "ActorIds": [128, 129, 130]
+  },
+  {
+    "Id": 47,
+    "Title": "Grave of the Fireflies",
+    "Genre": "Animation",
+    "Rating": 8.5,
+    "Year": 1988,
+    "ActorIds": [131, 132, 133]
+  },
+  {
+    "Id": 48,
+    "Title": "Sunset Blvd.",
+    "Genre": "Drama",
+    "Rating": 8.4,
+    "Year": 1950,
+    "ActorIds": [134, 135, 136]
+  },
+  {
+    "Id": 49,
+    "Title": "The Great Dictator",
+    "Genre": "Comedy",
+    "Rating": 8.4,
+    "Year": 1940,
+    "ActorIds": [104, 137, 138]
+  },
+  {
+    "Id": 50,
+    "Title": "Modern Times",
+    "Genre": "Comedy",
+    "Rating": 8.5,
+    "Year": 1936,
+    "ActorIds": [104, 139, 140]
+  }
+]

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace MovieApp.Domain.Entities
+﻿namespace MovieApp.Domain.Entities
 {
     public class Movie
     {

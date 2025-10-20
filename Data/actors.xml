@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Actors>
+	<Actor Id="1">
+		<Name>Tim Robbins</Name>
+		<BirthDate>1958-10-16</BirthDate>
+	</Actor>
+	<Actor Id="2">
+		<Name>Morgan Freeman</Name>
+		<BirthDate>1937-06-01</BirthDate>
+	</Actor>
+	<Actor Id="3">
+		<Name>Bob Gunton</Name>
+		<BirthDate>1945-11-15</BirthDate>
+	</Actor>
+	<Actor Id="4">
+		<Name>Marlon Brando</Name>
+		<BirthDate>1924-04-03</BirthDate>
+	</Actor>
+	<Actor Id="5">
+		<Name>Al Pacino</Name>
+		<BirthDate>1940-04-25</BirthDate>
+	</Actor>
+	<Actor Id="6">
+		<Name>James Caan</Name>
+		<BirthDate>1940-03-26</BirthDate>
+	</Actor>
+	<Actor Id="7">
+		<Name>Christian Bale</Name>
+		<BirthDate>1974-01-30</BirthDate>
+	</Actor>
+	<Actor Id="8">
+		<Name>Heath Ledger</Name>
+		<BirthDate>1979-04-04</BirthDate>
+	</Actor>
+	<Actor Id="9">
+		<Name>Aaron Eckhart</Name>
+		<BirthDate>1968-03-12</BirthDate>
+	</Actor>
+	<Actor Id="10">
+		<Name>Henry Fonda</Name>
+		<BirthDate>1905-05-16</BirthDate>
+	</Actor>
+	<Actor Id="11">
+		<Name>Lee J. Cobb</Name>
+		<BirthDate>1911-12-09</BirthDate>
+	</Actor>
+	<Actor Id="12">
+		<Name>Martin Balsam</Name>
+		<BirthDate>1919-11-04</BirthDate>
+	</Actor>
+	<Actor Id="13">
+		<Name>Liam Neeson</Name>
+		<BirthDate>1952-06-07</BirthDate>
+	</Actor>
+	<Actor Id="14">
+		<Name>Ralph Fiennes</Name>
+		<BirthDate>1962-12-22</BirthDate>
+	</Actor>
+	<Actor Id="15">
+		<Name>Ben Kingsley</Name>
+		<BirthDate>1943-12-31</BirthDate>
+	</Actor>
+	<Actor Id="16">
+		<Name>Elijah Wood</Name>
+		<BirthDate>1981-01-28</BirthDate>
+	</Actor>
+	<Actor Id="17">
+		<Name>Ian McKellen</Name>
+		<BirthDate>1939-05-25</BirthDate>
+	</Actor>
+	<Actor Id="18">
+		<Name>Viggo Mortensen</Name>
+		<BirthDate>1958-10-20</BirthDate>
+	</Actor>
+	<Actor Id="19">
+		<Name>John Travolta</Name>
+		<BirthDate>1954-02-18</BirthDate>
+	</Actor>
+	<Actor Id="20">
+		<Name>Samuel L. Jackson</Name>
+		<BirthDate>1948-12-21</BirthDate>
+	</Actor>
+	<Actor Id="21">
+		<Name>Uma Thurman</Name>
+		<BirthDate>1970-04-29</BirthDate>
+	</Actor>
+	<Actor Id="22">
+		<Name>Clint Eastwood</Name>
+		<BirthDate>1930-05-31</BirthDate>
+	</Actor>
+	<Actor Id="23">
+		<Name>Lee Van Cleef</Name>
+		<BirthDate>1925-01-09</BirthDate>
+	</Actor>
+	<Actor Id="24">
+		<Name>Eli Wallach</Name>
+		<BirthDate>1915-12-07</BirthDate>
+	</Actor>
+	<Actor Id="25">
+		<Name>Edward Norton</Name>
+		<BirthDate>1969-08-18</BirthDate>
+	</Actor>
+	<Actor Id="26">
+		<Name>Brad Pitt</Name>
+		<BirthDate>1963-12-18</BirthDate>
+	</Actor>
+	<Actor Id="27">
+		<Name>Helena Bonham Carter</Name>
+		<BirthDate>1966-05-26</BirthDate>
+	</Actor>
+	<Actor Id="28">
+		<Name>Tom Hanks</Name>
+		<BirthDate>1956-07-09</BirthDate>
+	</Actor>
+	<Actor Id="29">
+		<Name>Robin Wright</Name>
+		<BirthDate>1966-04-08</BirthDate>
+	</Actor>
+	<Actor Id="30">
+		<Name>Gary Sinise</Name>
+		<BirthDate>1955-03-17</BirthDate>
+	</Actor>
+	<Actor Id="31">
+		<Name>Leonardo DiCaprio</Name>
+		<BirthDate>1974-11-11</BirthDate>
+	</Actor>
+	<Actor Id="32">
+		<Name>Joseph Gordon-Levitt</Name>
+		<BirthDate>1981-02-17</BirthDate>
+	</Actor>
+	<Actor Id="33">
+		<Name>Elliot Page</Name>
+		<BirthDate>1987-02-21</BirthDate>
+	</Actor>
+	<Actor Id="34">
+		<Name>Keanu Reeves</Name>
+		<BirthDate>1964-09-02</BirthDate>
+	</Actor>
+	<Actor Id="35">
+		<Name>Laurence Fishburne</Name>
+		<BirthDate>1961-07-30</BirthDate>
+	</Actor>
+	<Actor Id="36">
+		<Name>Hugo Weaving</Name>
+		<BirthDate>1960-04-04</BirthDate>
+	</Actor>
+	<Actor Id="37">
+		<Name>Robert De Niro</Name>
+		<BirthDate>1943-08-17</BirthDate>
+	</Actor>
+	<Actor Id="38">
+		<Name>Ray Liotta</Name>
+		<BirthDate>1954-12-18</BirthDate>
+	</Actor>
+	<Actor Id="39">
+		<Name>Joe Pesci</Name>
+		<BirthDate>1943-02-09</BirthDate>
+	</Actor>
+	<Actor Id="40">
+		<Name>Toshiro Mifune</Name>
+		<BirthDate>1920-04-01</BirthDate>
+	</Actor>
+	<Actor Id="41">
+		<Name>Takashi Shimura</Name>
+		<BirthDate>1905-03-12</BirthDate>
+	</Actor>
+	<Actor Id="42">
+		<Name>Keiko Tsushima</Name>
+		<BirthDate>1926-10-01</BirthDate>
+	</Actor>
+	<Actor Id="43">
+		<Name>Seu Jorge</Name>
+		<BirthDate>1970-06-08</BirthDate>
+	</Actor>
+	<Actor Id="44">
+		<Name>Matheus Nachtergaele</Name>
+		<BirthDate>1968-05-03</BirthDate>
+	</Actor>
+	<Actor Id="45">
+		<Name>Pernilla August</Name>
+		<BirthDate>1958-02-13</BirthDate>
+	</Actor>
+	<Actor Id="46">
+		<Name>Gwyneth Paltrow</Name>
+		<BirthDate>1972-09-27</BirthDate>
+	</Actor>
+	<Actor Id="47">
+		<Name>Kevin Spacey</Name>
+		<BirthDate>1959-07-26</BirthDate>
+	</Actor>
+	<Actor Id="48">
+		<Name>Bradley Cooper</Name>
+		<BirthDate>1975-01-05</BirthDate>
+	</Actor>
+	<Actor Id="49">
+		<Name>Jodie Foster</Name>
+		<BirthDate>1962-11-19</BirthDate>
+	</Actor>
+	<Actor Id="50">
+		<Name>Anthony Hopkins</Name>
+		<BirthDate>1937-12-31</BirthDate>
+	</Actor>
+</Actors>
