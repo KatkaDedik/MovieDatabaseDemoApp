@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace AdditionalHomework.Domain.Entities
+namespace MovieApp.Domain.Entities
 {
     public class Movie
     {

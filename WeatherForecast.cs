@@ -1,4 +1,4 @@
-namespace AdditionalHomework
+amespace AdditionalHomework
 {
     public class WeatherForecast
     {

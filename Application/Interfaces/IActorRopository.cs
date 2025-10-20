@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MovieApp.Application.DTOs
+namespace MovieApp.Application.Interfaces
 {
-    public record ActorDto(int Id, string Name, DateTime BirthDate);
+    internal interface IActorRopository
+    {
+    }
 }
