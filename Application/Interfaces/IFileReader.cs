@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace MovieApp.Application.Interfaces
 {
-    internal interface IFileReader
+    public interface IFileReader
     {
+        Task<List<T>> ReadAsync<T>(string filePath);
     }
 }

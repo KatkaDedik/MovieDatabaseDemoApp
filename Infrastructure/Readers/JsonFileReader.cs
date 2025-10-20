@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MovieApp.Application.Interfaces;
 
 namespace MovieApp.Infrastructure.Readers
 {
-    internal class JsonFileReader
+    public class JsonFileReader : IFileReader
     {
+        public Task<List<T>> ReadAsync<T>(string filePath)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
