@@ -2,8 +2,8 @@
 {
     public class Actor
     {
-        int Id { get; set; }
-        string Name { get; set; } = string.Empty;
-        DateOnly BirthDate { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public DateOnly BirthDate { get; set; }
     }
 }

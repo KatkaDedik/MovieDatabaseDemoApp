@@ -5,9 +5,8 @@ using System.Xml.Serialization;
 public class XmlFileReaderTests
 {
     [Fact]
-    public async Task ReadAsync_ReturnParsedList()
+    public async Task ReadAsync_ShouldReturnParsedList()
     {
-        // Arrange
         var filePath = Path.GetTempFileName();
         var sampleData = new List<TestActor>
         {
@@ -23,14 +22,11 @@ public class XmlFileReaderTests
 
         var reader = new XmlFileReader();
 
-        // Act
         var result = await reader.ReadAsync<TestActor>(filePath);
 
-        // Assert
         Assert.Equal(2, result.Count);
         Assert.Equal("Leonardo DiCaprio", result[0].Name);
 
-        // Cleanup
         File.Delete(filePath);
     }
 
