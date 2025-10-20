@@ -1,7 +1,7 @@
 ﻿namespace MovieApp.Application.Interfaces
 {
-    internal interface ILoader
+    public interface ILoader<T>
     {
-
+        Task<List<T>> LoadAsync();
     }
 }

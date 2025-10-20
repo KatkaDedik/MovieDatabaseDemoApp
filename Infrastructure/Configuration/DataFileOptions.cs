@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace MovieApp.Infrastructure.Configuration
 {
-    internal class DataFileOptions
+    public class DataFileOptions
     {
         public const string SectionName = "DataFiles";
-        public string MoviesJson { get; set; } = string.Empty;
-        public string ActorsXml { get; set; } = string.Empty;
+        public string MoviesFilePath { get; set; } = string.Empty;
+        public string ActorsFilePath { get; set; } = string.Empty;
     }
 }
