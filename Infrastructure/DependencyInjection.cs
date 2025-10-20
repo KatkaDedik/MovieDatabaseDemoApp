@@ -7,6 +7,7 @@ using MovieApp.Infrastructure.Data;
 using MovieApp.Infrastructure.Loaders;
 using MovieApp.Infrastructure.Readers;
 using MovieApp.Infrastructure.Repositories;
+using MovieApp.Application.Interfaces;
 
 namespace MovieApp.Infrastructure
 {
@@ -18,10 +19,11 @@ namespace MovieApp.Infrastructure
 
             services.AddDbContext<AppDbContext>(Options => Options.UseSqlite(configuration.GetConnectionString("DefaultConnection")));
 
-            //services.AddSingleton<IFileReader, JsonFileReader>();
-            //services.AddSingleton<ILoader<MovieDto>, MovieLoader>();
-            //services.AddSingleton<ILoader<ActorDto>, ActorLoader>();
+            services.AddSingleton<IFileReader, JsonFileReader>();
+            services.AddSingleton<ILoader<MovieDto>, MovieLoader>();
+            services.AddSingleton<ILoader<ActorDto>, ActorLoader>();
 
+            //still not implemented
             //services.AddScoped<IMovieRepository, MovieRepository>();
             //services.AddScoped<IActorRepository, ActorRepository>();
 
