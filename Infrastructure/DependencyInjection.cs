@@ -9,6 +9,7 @@ using MovieApp.Infrastructure.Readers;
 using MovieApp.Infrastructure.Repositories;
 using MovieApp.Application.Interfaces;
 
+
 namespace MovieApp.Infrastructure
 {
     public static class DependencyInjection
@@ -23,9 +24,8 @@ namespace MovieApp.Infrastructure
             services.AddSingleton<ILoader<MovieDto>, MovieLoader>();
             services.AddSingleton<ILoader<ActorDto>, ActorLoader>();
 
-            //still not implemented
-            //services.AddScoped<IMovieRepository, MovieRepository>();
-            //services.AddScoped<IActorRepository, ActorRepository>();
+            services.AddScoped<IMovieRepository, MovieRepository>();
+            services.AddScoped<IActorRepository, ActorRepository>();
 
             return services;
         }
