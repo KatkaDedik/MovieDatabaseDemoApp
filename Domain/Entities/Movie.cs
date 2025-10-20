@@ -7,6 +7,6 @@
         public string Genre { get; set; } = string.Empty;
         public float Rating { get; set; }
         public int Year { get; set; }
-        public ICollection<int> ActorsIds { get; set; } = new List<int>();
+        public ICollection<Actor> Actors { get; set; } = new List<Actor>();
     }
 }
