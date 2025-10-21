@@ -11,5 +11,6 @@ namespace MovieApp.Application.DTOs
         int YoungestActorAge,
         string MostProlificActor,
         decimal HighestRatedGenreAvg,
-        Movie? LongestTitleMovie);
+        Movie? LongestTitleMovie
+        );
 }
