@@ -9,11 +9,11 @@ namespace MovieApp.Infrastructure.Loaders
 {
     public class ActorLoader : ILoader<ActorDto>
     {
-        private readonly XmlFileReader _reader;
+        private readonly IFileReader _reader;
         private readonly DataFileOptions _options;
         private readonly ILogger<ActorLoader> _logger;
 
-        public ActorLoader(XmlFileReader reader, IOptions<DataFileOptions> options, ILogger<ActorLoader> logger)
+        public ActorLoader(IFileReader reader, IOptions<DataFileOptions> options, ILogger<ActorLoader> logger)
         {
             _reader = reader;
             _options = options.Value;
