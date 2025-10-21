@@ -15,6 +15,15 @@ namespace MovieApp.Api.Controllers
             _statisticsService = statisticsService;
         }
 
+        /// <summary>
+        /// Retrieves statistical data about movies and actrors.
+        /// </summary>
+        /// <remarks>
+        /// Includes metrics such as total counts, average ratings, top genres, and age ranges.
+        /// </remarks>
+        /// <response code="200">Statistics calculated successfully.</response>
+        /// <response code="500">Internal server error while processing the statistics.</response>
+        [HttpGet]
         [HttpGet]
         public async Task<ActionResult<StatisticsResult>> GetStatistics()
         {
