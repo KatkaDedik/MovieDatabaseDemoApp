@@ -20,7 +20,8 @@ namespace MovieApp.Infrastructure
 
             services.AddDbContext<AppDbContext>(Options => Options.UseSqlite(configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddSingleton<IFileReader, JsonFileReader>();
+            services.AddSingleton<JsonFileReader>();
+            services.AddSingleton<XmlFileReader>();
             services.AddSingleton<ILoader<MovieDto>, MovieLoader>();
             services.AddSingleton<ILoader<ActorDto>, ActorLoader>();
 

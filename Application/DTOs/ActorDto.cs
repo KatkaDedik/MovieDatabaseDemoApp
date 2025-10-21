@@ -1,10 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Xml.Serialization;
 
 namespace MovieApp.Application.DTOs
 {
-    public record ActorDto(int Id, string Name, DateOnly BirthDate);
+
+    [XmlType("Actor")]
+    public class ActorDto
+    {
+        [XmlAttribute("Id")]
+        public int Id { get; set; }
+
+        [XmlElement("Name")]
+        public string Name { get; set; } = string.Empty;
+
+        [XmlElement("BirthDate")]
+        public DateOnly BirthDate { get; set; }
+
+        public ActorDto() { }
+    }
 }

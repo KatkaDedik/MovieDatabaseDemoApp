@@ -19,6 +19,12 @@
 	 <ProjectReference Include="..\Domain\Domain.csproj" />
 	 <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Data\actors.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 	
   <PropertyGroup>
 	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>

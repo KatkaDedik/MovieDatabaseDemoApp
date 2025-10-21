@@ -5,7 +5,6 @@ using MovieApp.Infrastructure.Data;
 using MovieApp.Application.DTOs;
 using MovieApp.Domain.Entities;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -37,16 +36,13 @@ using (var scope = app.Services.CreateScope())
     var actorRepo = scope.ServiceProvider.GetRequiredService<IActorRepository>();
 
 
-
-    if (!db.Movies.Any())
+    if (!db.Movies.Any() || !db.Actors.Any())
     {
         var movieLoader = scope.ServiceProvider.GetRequiredService<ILoader<MovieDto>>();
         var actorLoader = scope.ServiceProvider.GetRequiredService<ILoader<ActorDto>>();
 
         List<MovieDto> movieDtos = await movieLoader.LoadAsync();
         List<ActorDto> actorDtos = await actorLoader.LoadAsync();
-
-        Actor a = new Actor();
 
         var actors = actorDtos.Select(a => new MovieApp.Domain.Entities.Actor
         {
@@ -68,7 +64,7 @@ using (var scope = app.Services.CreateScope())
         await actorRepo.AddRangeAsync(actors);
         await movieRepo.AddRangeAsync(movies);
 
-        Console.WriteLine("Data loaded where loaded successfully!");
+        Console.WriteLine("Data where loaded successfully!");
     }
 }
 
