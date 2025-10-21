@@ -8,11 +8,11 @@ namespace MovieApp.Domain.Extensions
 {
     public static class ActorExtension
     {
-        public static int GetAge(this DateTime birthDate)
+        public static int GetAge(this DateOnly birthDate)
         {
-            var today = DateTime.Today;
+            var today = DateOnly.FromDateTime(DateTime.Today);
             var age = today.Year - birthDate.Year;
-            if (birthDate.Date > today.AddYears(-age)) age--;
+            if (birthDate > today.AddYears(-age)) age--;
             return age;
         }
     }
