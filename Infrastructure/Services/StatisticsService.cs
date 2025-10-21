@@ -4,7 +4,7 @@ using MovieApp.Domain.Entities;
 using MovieApp.Domain.Extensions;
 using System.Linq;
 
-namespace Application.Services
+namespace MovieApp.Application.Services
 {
     public class StatisticsService : IStatisticsService
     {

@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using MovieApp.Application.DTOs;
 using MovieApp.Application.Interfaces;
+using MovieApp.Application.Services;
 using MovieApp.Infrastructure.Configuration;
 using MovieApp.Infrastructure.Data;
 using MovieApp.Infrastructure.Loaders;
@@ -44,9 +45,9 @@ namespace MovieApp.Infrastructure
                 return new ActorLoader(reader, options, logger);
             });
 
-
             services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddScoped<IActorRepository, ActorRepository>();
+            services.AddScoped<IStatisticsService, StatisticsService>();
 
             return services;
         }
