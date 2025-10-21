@@ -24,7 +24,6 @@ namespace MovieApp.Api.Controllers
         /// <response code="200">Statistics calculated successfully.</response>
         /// <response code="500">Internal server error while processing the statistics.</response>
         [HttpGet]
-        [HttpGet]
         public async Task<ActionResult<StatisticsResult>> GetStatistics()
         {
             var result = await _statisticsService.GetStatisticsAsync();
