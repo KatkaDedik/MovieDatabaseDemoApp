@@ -13,7 +13,7 @@ namespace MovieApp.Application.DTOs
         public string Name { get; set; } = string.Empty;
 
         [XmlElement("BirthDate")]
-        public DateOnly BirthDate { get; set; }
+        public DateTime BirthDate { get; set; }
 
         public ActorDto() { }
     }

@@ -1,9 +1,11 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using MovieApp.Application.DTOs;
 using MovieApp.Application.Interfaces;
+using MovieApp.Domain.Entities;
 using MovieApp.Infrastructure;
 using MovieApp.Infrastructure.Data;
-using MovieApp.Application.DTOs;
-using MovieApp.Domain.Entities;
+using MovieApp.Infrastructure.Loaders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,43 +31,92 @@ using (var scope = app.Services.CreateScope())
 {
     var servicesProvider = scope.ServiceProvider;
     var db = servicesProvider.GetRequiredService<AppDbContext>();
+    var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
 
     db.Database.EnsureCreated();
 
     var movieRepo = scope.ServiceProvider.GetRequiredService<IMovieRepository>();
     var actorRepo = scope.ServiceProvider.GetRequiredService<IActorRepository>();
 
+    var movieLoader = scope.ServiceProvider.GetRequiredService<ILoader<MovieDto>>();
+    var actorLoader = scope.ServiceProvider.GetRequiredService<ILoader<ActorDto>>();
 
-    if (!db.Movies.Any() || !db.Actors.Any())
+    bool actorsSeeded = false;
+    bool moviesSeeded = false;
+
+    if(!db.Actors.Any())
     {
-        var movieLoader = scope.ServiceProvider.GetRequiredService<ILoader<MovieDto>>();
-        var actorLoader = scope.ServiceProvider.GetRequiredService<ILoader<ActorDto>>();
-
-        List<MovieDto> movieDtos = await movieLoader.LoadAsync();
-        List<ActorDto> actorDtos = await actorLoader.LoadAsync();
-
-        var actors = actorDtos.Select(a => new MovieApp.Domain.Entities.Actor
+        try
         {
-            Id = a.Id,
-            Name = a.Name,
-            BirthDate = a.BirthDate
-        }).ToList();
+            List<ActorDto> actorDtos = await actorLoader.LoadAsync();
+            if (actorDtos.Any())
+            {
+                var actors = actorDtos.Select(a => new Actor
+                {
+                    Id = a.Id,
+                    Name = a.Name,
+                    BirthDate = DateOnly.FromDateTime(a.BirthDate)
+                }).ToList();
 
-        var movies = movieDtos.Select(m => new MovieApp.Domain.Entities.Movie
+                await actorRepo.AddRangeAsync(actors);
+                actorsSeeded = true;
+
+                logger.LogInformation($"Seeded {actors.Count} actors.");
+            }
+            else
+            {
+                logger.LogWarning("No actors loaded from XML.");
+            }
+        }
+        catch (Exception ex)
         {
-            Id = m.Id,
-            Title = m.Title,
-            Genre = m.Genre,
-            Rating = m.Rating,
-            Year = m.Year,
-            Actors = actors.Where(a => m.ActorsIds.Contains(a.Id)).ToList()
-        }).ToList();
-
-        await actorRepo.AddRangeAsync(actors);
-        await movieRepo.AddRangeAsync(movies);
-
-        Console.WriteLine("Data where loaded successfully!");
+            logger.LogError(ex, "Failed to seed actors.");
+        }
     }
+    else
+    {
+        logger.LogInformation("Actors have already existed, skipping seeding.");
+    }
+
+
+    if (!db.Movies.Any())
+    {
+        try
+        {
+            var movieDtos = await movieLoader.LoadAsync();
+            if (movieDtos.Any())
+            {
+                var allActors = await db.Actors.ToListAsync();
+
+                var movies = movieDtos.Select(m => new Movie
+                {
+                    Title = m.Title,
+                    Genre = m.Genre,
+                    Rating = m.Rating,
+                    Year = m.Year,
+                    Actors = allActors.Where(a => m.ActorsIds.Contains(a.Id)).ToList()
+                }).ToList();
+
+                await movieRepo.AddRangeAsync(movies);
+                moviesSeeded = true;
+                logger.LogInformation($"Seeded {movies.Count} movies.");
+            }
+            else
+            {
+                logger.LogWarning("No movies loaded from JSON.");
+            }
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Failed to seed movies.");
+        }
+    }
+    else
+    {
+        logger.LogInformation("Movies have already existed, skipping seeding.");
+    }
+
+
 }
 
 

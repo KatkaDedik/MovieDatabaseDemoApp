@@ -42,5 +42,4 @@ namespace MovieApp.Infrastructure.Readers
             }
         }
     }
-    }
 }

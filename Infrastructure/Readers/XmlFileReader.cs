@@ -24,8 +24,20 @@ namespace MovieApp.Infrastructure.Readers
                 }
 
                 await using var stream = File.OpenRead(filePath);
-                var serializer = new XmlSerializer(typeof(List<T>));
-                return (List<T>)(serializer.Deserialize(stream) ?? new List<T>());
+
+                if (stream.Length == 0)
+                {
+                    _logger.LogError($"XML file {filePath} is empty.");
+                    return new List<T>();
+                }
+
+                stream.Position = 0;
+
+                XmlSerializer serializer = new XmlSerializer(typeof(List<T>), new XmlRootAttribute("Actors"));
+                List<T>? result = (List<T>?)serializer.Deserialize(stream);
+
+                _logger.LogInformation($"Loaded {result?.Count ?? 0} records from {filePath}" );
+                return result ?? new List<T>();
             }
             catch (InvalidOperationException ex)
             {
