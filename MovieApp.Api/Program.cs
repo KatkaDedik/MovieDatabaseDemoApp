@@ -44,7 +44,7 @@ using (var scope = app.Services.CreateScope())
     bool actorsSeeded = false;
     bool moviesSeeded = false;
 
-    if(!db.Actors.Any())
+    if (!db.Actors.Any())
     {
         try
         {
@@ -84,9 +84,10 @@ using (var scope = app.Services.CreateScope())
         try
         {
             var movieDtos = await movieLoader.LoadAsync();
+
             if (movieDtos.Any())
             {
-                var allActors = await db.Actors.ToListAsync();
+                var existingActors = await actorRepo.GetAllAsync();
 
                 var movies = movieDtos.Select(m => new Movie
                 {
@@ -94,7 +95,9 @@ using (var scope = app.Services.CreateScope())
                     Genre = m.Genre,
                     Rating = m.Rating,
                     Year = m.Year,
-                    Actors = allActors.Where(a => m.ActorsIds.Contains(a.Id)).ToList()
+                    Actors = existingActors
+                .Where(a => m.ActorIds.Contains(a.Id))
+                .ToList()
                 }).ToList();
 
                 await movieRepo.AddRangeAsync(movies);
@@ -116,10 +119,50 @@ using (var scope = app.Services.CreateScope())
         logger.LogInformation("Movies have already existed, skipping seeding.");
     }
 
+    if (!db.Set<Movie>().Include(m => m.Actors).Any(m => m.Actors.Any()))
+    {
+        logger.LogInformation("Trying to Re-Join existing movies and actors");
+
+        var movieDtos = await movieLoader.LoadAsync();
+        var existingMovies = await movieRepo.GetAllAsync();
+        var existingActors = await actorRepo.GetAllAsync();
+
+        int relationCount = 0;
+
+        foreach (var movieDto in movieDtos)
+        {
+            try
+            {
+                var movie = existingMovies.FirstOrDefault(m => m.Id == movieDto.Id);
+                if (movie == null) continue;
+
+                var relatedActors = existingActors
+                    .Where(a => movieDto.ActorIds.Contains(a.Id))
+                    .ToList();
+
+                foreach (var actor in relatedActors)
+                {
+                    if (!movie.Actors.Contains(actor))
+                    {
+                        movie.Actors.Add(actor);
+                        relationCount++;
+                    }
+                }
+            }
+            catch(NullReferenceException nex)
+            {
+                logger.LogError(nex, $"Null reference while re-joining actors for movie ID {movieDto.Id}");
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, $"Failed to re-join actors for movie ID {movieDto.Id}");
+            }
+        }
+        await db.SaveChangesAsync();
+        logger.LogInformation("Join existing movies and actors finished");
+    }
 
 }
-
-
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
