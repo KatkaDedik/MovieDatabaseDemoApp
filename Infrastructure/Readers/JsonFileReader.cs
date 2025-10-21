@@ -7,9 +7,9 @@ namespace MovieApp.Infrastructure.Readers
 {
     public class JsonFileReader : IFileReader
     {
-        private readonly ILogger<XmlFileReader> _logger;
+        private readonly ILogger<JsonFileReader> _logger;
 
-        public JsonFileReader(ILogger<XmlFileReader> logger)
+        public JsonFileReader(ILogger<JsonFileReader> logger)
         {
             _logger = logger;
         }

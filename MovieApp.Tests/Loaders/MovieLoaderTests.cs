@@ -1,11 +1,13 @@
-﻿using Xunit;
+﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Moq;
-using MovieApp.Infrastructure.Loaders;
-using MovieApp.Application.Interfaces;
 using MovieApp.Application.DTOs;
+using MovieApp.Application.Interfaces;
 using MovieApp.Domain.Entities;
 using MovieApp.Infrastructure.Configuration;
-using Microsoft.Extensions.Options;
+using MovieApp.Infrastructure.Loaders;
+using MovieApp.Infrastructure.Readers;
+using Xunit;
 
 public class MovieLoaderTests
 {
@@ -26,7 +28,7 @@ public class MovieLoaderTests
 
         var options = Options.Create(new DataFileOptions { MoviesFilePath = "fake" });
 
-        var movieLoader = new MovieLoader(mockReader.Object, options);
+        var movieLoader = new MovieLoader((JsonFileReader)mockReader.Object, options);
 
         List<MovieDto> result = await movieLoader.LoadAsync();
 
@@ -51,7 +53,7 @@ public class MovieLoaderTests
 
         var options = Options.Create(new DataFileOptions { MoviesFilePath = "fake" });
 
-        var movieLoader = new MovieLoader(mockReader.Object, options);
+        var movieLoader = new MovieLoader((JsonFileReader)mockReader.Object, options);
 
         List<MovieDto> result = await movieLoader.LoadAsync();
 

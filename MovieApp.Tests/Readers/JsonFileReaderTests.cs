@@ -1,7 +1,8 @@
-﻿using Xunit;
+﻿using Microsoft.Extensions.Logging;
+using Moq;
 using MovieApp.Infrastructure.Readers;
-using System.IO;
 using System.Text.Json;
+using Xunit;
 
 public class JsonFileReaderTests
 {
@@ -16,7 +17,8 @@ public class JsonFileReaderTests
         };
         await File.WriteAllTextAsync(filePath, JsonSerializer.Serialize(sampleData));
 
-        JsonFileReader reader = new JsonFileReader();
+        var mockLogger = new Mock<ILogger<JsonFileReader>>();
+        var reader = new JsonFileReader(mockLogger.Object);
 
         List<TestMovie> result = await reader.ReadAsync<TestMovie>(filePath);
 

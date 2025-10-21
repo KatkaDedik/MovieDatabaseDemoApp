@@ -1,6 +1,8 @@
-﻿using Xunit;
+﻿using Microsoft.Extensions.Logging;
+using Moq;
 using MovieApp.Infrastructure.Readers;
 using System.Xml.Serialization;
+using Xunit;
 
 public class XmlFileReaderTests
 {
@@ -20,7 +22,8 @@ public class XmlFileReaderTests
             serializer.Serialize(stream, sampleData);
         }
 
-        var reader = new XmlFileReader();
+        var mockLogger = new Mock<ILogger<XmlFileReader>>();
+        var reader = new XmlFileReader(mockLogger.Object);
 
         var result = await reader.ReadAsync<TestActor>(filePath);
 
