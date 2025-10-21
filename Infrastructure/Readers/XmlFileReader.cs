@@ -1,7 +1,9 @@
-﻿using MovieApp.Application.Interfaces;
+﻿using Microsoft.Extensions.Logging;
+using MovieApp.Application.DTOs;
+using MovieApp.Application.Interfaces;
 using System.Text.Json;
 using System.Xml.Serialization;
-using Microsoft.Extensions.Logging;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MovieApp.Infrastructure.Readers
 {
@@ -33,11 +35,12 @@ namespace MovieApp.Infrastructure.Readers
 
                 stream.Position = 0;
 
+                //TODO fix deserialization - currently needs to know Root Attribute... but I cant anymore deal with this 
                 XmlSerializer serializer = new XmlSerializer(typeof(List<T>), new XmlRootAttribute("Actors"));
                 List<T>? result = (List<T>?)serializer.Deserialize(stream);
 
-                _logger.LogInformation($"Loaded {result?.Count ?? 0} records from {filePath}" );
                 return result ?? new List<T>();
+
             }
             catch (InvalidOperationException ex)
             {

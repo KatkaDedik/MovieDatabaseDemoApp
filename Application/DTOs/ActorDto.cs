@@ -3,7 +3,7 @@
 namespace MovieApp.Application.DTOs
 {
 
-    [XmlType("Actor")]
+    [XmlRoot("Actors"), XmlType("Actor")]
     public class ActorDto
     {
         [XmlAttribute("Id")]

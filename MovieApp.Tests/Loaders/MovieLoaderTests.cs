@@ -28,7 +28,8 @@ public class MovieLoaderTests
 
         var options = Options.Create(new DataFileOptions { MoviesFilePath = "fake" });
 
-        var movieLoader = new MovieLoader((JsonFileReader)mockReader.Object, options);
+        var mockLogger = new Mock<ILogger<MovieLoader>>();
+        var movieLoader = new MovieLoader(mockReader.Object, options, mockLogger.Object);
 
         List<MovieDto> result = await movieLoader.LoadAsync();
 
@@ -53,7 +54,8 @@ public class MovieLoaderTests
 
         var options = Options.Create(new DataFileOptions { MoviesFilePath = "fake" });
 
-        var movieLoader = new MovieLoader((JsonFileReader)mockReader.Object, options);
+        var mockLogger = new Mock<ILogger<MovieLoader>>();
+        var movieLoader = new MovieLoader(mockReader.Object, options, mockLogger.Object);
 
         List<MovieDto> result = await movieLoader.LoadAsync();
 
