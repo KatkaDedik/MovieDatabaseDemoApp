@@ -2,6 +2,7 @@
 using MovieApp.Application.Interfaces;
 using MovieApp.Domain.Entities;
 using MovieApp.Domain.Extensions;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace MovieApp.Application.Services
@@ -22,24 +23,15 @@ namespace MovieApp.Application.Services
             var movies = await _movieRepository.GetAllAsync();
             var actors = await _actorRepository.GetAllAsync();
 
-
             int totalMovies = movies.Count();
-
             int totalActors = actors.Count();
-
-            decimal averageRating = 0;
-
-            List<string> topGenres = new();
-            int oldestActorAge = 0;
-            int youngestActorAge = 0;
-            string mostProlificActor = "";
+            decimal averageRating = StatisticsCalculations.GetAverageMovieRating(movies);
+            List<string> topGenres = StatisticsCalculations.GetTopGenres(movies, 3);
+            int oldestActorAge = StatisticsCalculations.GetOldestActorAge(actors);
+            int youngestActorAge = StatisticsCalculations.GetYoungestActorAge(actors);
+            string mostProlificActor = StatisticsCalculations.GetMostProlificActor(movies);
             decimal highestRatedGenreAvg = StatisticsCalculations.GetHighestRatedGenreAvg(movies);
-            List<string> TopGenres = new List<string>();
-            int OldestActorAge = StatisticsCalculations.GetOldestActorAge(actors);
-            int YoungestActorAge = StatisticsCalculations.GetYoungestActorAge(actors);
-            string MostProlificActor = string.Empty;
-            decimal HighestRatedGenreAvg = 0;
-            Movie? longestTitleMovie = null;
+            Movie? longestTitleMovie = StatisticsCalculations.GetLongestTitleMovie(movies);
 
             return new StatisticsResult(
                 totalMovies,
@@ -58,6 +50,59 @@ namespace MovieApp.Application.Services
 
     public static class StatisticsCalculations
     {
+        public static Movie? GetLongestTitleMovie(List<Movie> movies)
+        {
+            return movies
+                .OrderByDescending(m => m.Title.Length)
+                .FirstOrDefault();
+        }
+
+        public static string GetMostProlificActor(List<Movie> movies)
+        {
+            return movies
+                .SelectMany(m => m.Actors)
+                .GroupBy(a => a.Name)
+                .Select(g => new
+                {
+                    ActorName = g.Key,
+                    AppearanceCount = g.Count()
+                })
+                .OrderByDescending(x => x.AppearanceCount)
+                .FirstOrDefault()?.ActorName ?? "Katka";
+        }
+
+        /// <summary>
+        /// The top N most frequent genres.
+        /// </summary>
+        /// <param name="movies">List of movies</param>
+        /// <param name="topN">top N movies will be returned</param>
+        /// <returns></returns>
+        public static List<string> GetTopGenres(List<Movie> movies, int topN)
+        {
+            return movies
+                .GroupBy(m => m.Genre)
+                .OrderByDescending(g => g.Count())
+                .Take(topN)
+                .Select(g => g.Key)
+                .ToList();
+        }
+
+        /// <summary>
+        /// Calculates the average rating of a list of movies.
+        /// </summary>
+        /// <param name="movies">A list of <see cref="Movie"/> objects for which the average rating is calculated.  The list must not be
+        /// null, but it can be empty.</param>
+        /// <returns>The average rating of the movies as a <see cref="decimal"/>.  Returns 0 if the list is null or contains no
+        /// movies.</returns>
+        public static decimal GetAverageMovieRating(List<Movie> movies)
+        {
+            if (movies == null || movies.Count == 0)
+            {
+                return 0m;
+            }
+            return (decimal)movies.Average(m => m.Rating);
+        }
+
         /// <summary>
         /// Calculates the genre with the highest average movie rating and returns that average rating.
         /// </summary>
@@ -76,8 +121,6 @@ namespace MovieApp.Application.Services
                 .FirstOrDefault();
             return highestRatedGenre is null ? 0m : (decimal)highestRatedGenre.AverageRating;
         }
-
-        public static decimal GetAverageRating(List<Movie> movies) { throw new NotImplementedException(); }
 
         public static int GetOldestActorAge(List<Actor> actors)
         {

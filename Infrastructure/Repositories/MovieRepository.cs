@@ -22,7 +22,9 @@ namespace MovieApp.Infrastructure.Repositories
 
         public async Task<List<Movie>> GetAllAsync()
         {
-            return await _context.Movies.ToListAsync();
+            return await _context.Movies
+                .Include(m => m.Actors)
+                .ToListAsync();
         }
 
         public Task<List<Movie>> GetTopRatedAsync(int count)
