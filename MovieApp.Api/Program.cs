@@ -33,7 +33,6 @@ using (var scope = app.Services.CreateScope())
     var db = servicesProvider.GetRequiredService<AppDbContext>();
     var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
 
-    db.Database.EnsureDeleted();
     db.Database.EnsureCreated();
 
     var movieRepo = scope.ServiceProvider.GetRequiredService<IMovieRepository>();

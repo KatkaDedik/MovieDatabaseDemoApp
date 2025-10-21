@@ -2,6 +2,7 @@
 using MovieApp.Application.DTOs;
 using MovieApp.Application.Interfaces;
 using System.Text.Json;
+using System.Xml;
 using System.Xml.Serialization;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -34,9 +35,16 @@ namespace MovieApp.Infrastructure.Readers
                 }
 
                 stream.Position = 0;
+                using var xmlReader = XmlReader.Create(stream);
+                //Return position to beginning after XmlReader creation
+                stream.Position = 0;
 
-                //TODO fix deserialization - currently needs to know Root Attribute... but I cant anymore deal with this 
-                XmlSerializer serializer = new XmlSerializer(typeof(List<T>), new XmlRootAttribute("Actors"));
+                //Get the Name of the root element
+                xmlReader.MoveToContent();
+                string rootElementName = xmlReader.Name;
+
+                //Deserialize the XML into List<T> using the root element name
+                XmlSerializer serializer = new XmlSerializer(typeof(List<T>), new XmlRootAttribute(rootElementName));
                 List<T>? result = (List<T>?)serializer.Deserialize(stream);
 
                 return result ?? new List<T>();
